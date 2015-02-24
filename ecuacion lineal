@@ -1,0 +1,30 @@
+# Algoritmos-I
+#include "stdafx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+
+using namespace std;
+
+void mai()
+{int a,b,c,d,e,f;
+ float x,y;
+cout<<"ingrese los valores de a:\n";
+cin>>a;
+cout<<"ingrese los valores de b:\n";
+cin>>b;
+cout<<"ingrese los valores de c:\n";
+cin>>c;
+cout<<"ingrese los valores de d:\n";
+cin>>d;
+cout<<"ingrese los valores de e:\n";
+cin>>e;
+cout<<"ingrese los valores de f:\n";
+cin>>f;
+ x=(c-b*x*(((f*a-d*c)/(e*a-b*d))/a));
+cout<<"el valor de x es:\n"<<x;
+y=(f*a-d*c)/(e*a-b*d);
+cout<<"el valor de y es:\n"<<y;
+
+} getch(); 
+
