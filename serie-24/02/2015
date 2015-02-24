@@ -1,0 +1,48 @@
+// serie.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+
+using namespace std;
+
+float serie (float x,int n);
+float fact (int x);
+
+void main()
+{int x,n;
+float total;
+cout<<"Ingrese el tamaño de la serie:\n";
+cin>>n;
+cout<<"ingrese el valor de x:\n";
+cin>>x;
+
+	total= serie (x,n);
+	cout<<"La sumatoria es:\n";
+	cout<<total;
+
+getch();
+}
+
+float serie(float x,int n)
+{float sig,s,i;
+	sig=1;
+	s=0;
+
+	for (i=1;i<=n;i++)
+	{s=s+(sig*(pow(x,i)/fact(i)));
+	sig=sig*(-1);
+	}
+	return (s);
+}
+
+float fact(int x)
+{int b=1;
+
+	for (int i=1;i<=x;i++)
+		b=b*i;
+	return (b);
+}	
+	
