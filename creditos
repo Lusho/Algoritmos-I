@@ -1,0 +1,57 @@
+# Algoritmos-I
+// tabla.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include <string>
+#define tam 50
+using namespace std;
+void leer_s(float a[], string b[], int n);
+void leer_l(string a[], int n);
+void mostrar_tabla(string a[], float b[], int n);
+void main()
+{
+float creditos[tam];
+string cliente[tam];
+int n;
+cout<<"ingrese numero de clientes";
+cin>>n;
+leer_l(cliente, n);
+leer_s(creditos, cliente, n);
+mostrar_tabla(cliente, creditos, n);
+_getch();
+}
+void leer_s(float a[], string b[], int n)
+{
+for(int i=0;i<n;i++)
+{
+cout<<"ingrese monto de "<<b[i]<<":";
+cin>>a[i];
+}
+}
+void leer_l(string a[], int n)
+{
+cin.ignore();
+for(int i=0;i<n;i++)
+{
+int nc=i+1;
+cout<<"ingrese nombre del cliente "<<nc<<" : ";
+getline(cin,a[i]);
+}
+}
+void mostrar_tabla(string a[], float b[], int n)
+{
+float tot=0;
+cout<<"tabla de creditos\t"<<endl;
+cout<<" N "<<" cliente "<<" credito "<<endl;
+cout<<"---------------------------------------------"<<endl;
+for(int i=0;i<n;i++)
+{
+int nc=i+1;
+cout<<nc<<" "<<a[i]<<" "<<b[i]<<endl;
+tot=tot+b[i];
+}
+cout<<"-------------------------------------------------"<<endl;
+cout<<"total del monto en creditos : "<<tot<<endl;
+}
