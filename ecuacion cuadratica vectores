@@ -1,0 +1,46 @@
+# Algoritmos-I
+// ejemplo.cpp : Defines the entry point for the console application.
+//
+
+// laboratorio.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include <string>
+#include "math.h"
+#define tam 3
+void ecuacion (int v[], float x1,float x2);
+
+using namespace std;
+
+void main()
+{int a,b,c,i,v[tam];
+float x1,x2,d;
+string e[tam];
+e[0]='a';e[1]='b';e[2]='c';
+	for (i=0;i<3;i++)
+	{cout<<"ingrese el valor de "<<e[i];
+	cin>>v[i];
+	}
+	ecuacion(int v[],float x1,float x2);
+ 
+	_getch();
+}
+
+void ecuacion (int v[], float x1, float x2)
+{float d;
+  d= (pow(v[1],2)- (4*v[0]*v[2]));
+	if (d>0)
+	{x1= (-v[1]+(sqrt (d)))/(2*v[0]);
+	 x2= (-v[1]-(sqrt(d)))/(2*v[0]);
+
+	cout<<"el valor de x1:  "<<x1;
+	cout<<"el valor de x2:  "<<x2;
+	}
+	else
+		if (d=0) cout<<"solucion unica"<< (-v[1]/(2*v[0]));
+	else 
+	    if (d<0) cout<<"solucion imaginaria";
+}
