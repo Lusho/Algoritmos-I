@@ -1,0 +1,248 @@
+# Algoritmos-I
+// lab.cpp : Defines the entry point for the console application.
+//
+// menu.cpp : Defines the entry point for the console application.
+//
+
+/*#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define max 100
+
+
+using namespace std;
+
+
+*/
+
+
+// Matriz de matriz
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <math.h>
+#define fil 30
+#define col 30
+#define MAX 100 //Declarar una constante por compilador 
+ void cargarvector(v,n);
+ void cargarmatriz(v,n,m);
+ void cargarplanila(v,n);
+ void cargarmatrizdematriz(m.mat[max][max],m,n,i,j);
+ void llenar_auto(telemento M[fil][col], int n);
+ void cargarplanilla(v,n);
+ void cargarvector(v,n);
+ void cargarmatriz(v,n,m);
+ float impuesto (float sb);
+ float AFP (float sb);
+
+
+using namespace std;
+
+struct telemento//matiz de matriz
+{int mat[fil][col];
+};
+void main()
+{ int v,n,mat[],m,n,i,j,M;
+ float sb;
+   int a, b, r, opcion;
+   cout << "Ingrese a: " ;
+   cin >> a;
+   cout << "Ingrese b: " ;
+   cin >> b;
+   do {
+     cout << endl;
+     cout << "1.- cargar vector" << endl;
+     cout << "2.- cargar matriz" << endl;
+     cout << "3.- cargar planilla" << endl;
+     cout << "4.- cargar matriz de matriz" << endl;
+	 cout << "0.- Salir" << endl;
+     cout << "Elige una opción: " ;
+     cin >> opcion;
+     switch (opcion) {
+	    case 1: cargarvector(v,n); break;
+	    case 2: cargarmatriz(v,n,m); break;
+	    case 3: cargarplanila(v,n); break;
+	    case 4: cargarmatrizdematriz(m.mat[max][max],m,n,i,j); break;
+		case 0: cout << "Salir";break;
+	    default: cout << "Opcion invalida" << endl;
+     }
+     cout <<  <<  << endl;
+	 } while (opcion != 0);
+     getch();
+}
+
+
+
+
+//matriz de matriz
+void llenar_auto(telemento M[fil][col], int n)
+{int i,j,k,l;
+srand(time(NULL)); // Genera los números randomicamente
+	for(i=0;i<n;i++)
+		{for(j=0;j<n;j++)
+			{for(k=0;k<n;k++)
+				{for(l=0;l<n;l++)
+				// Referencia a la matriz dentro de la matriz
+					{M[i][j].mat[k][l]=rand() %10;
+					}
+				}
+			}
+	}
+}
+ //-------------------------------mostrar matriz de matriz------------------------------------------
+void mostrar2 (telemento M[fil][col], int n)
+{int i, j,k,l;
+	for(i=0;i<n;i++)
+		{for(j=0;j<n;j++)
+			{for(k=0;k<n;k++)
+				{for(l=0;l<n;l++)
+					{cout<<M[i][j].mat[k][l]<<" ";
+					}cout<<endl;
+				}cout<<endl;
+			}cout<<endl;
+		}cout<<endl;
+}
+//------------------------------cargar matriz--------------------------------------------
+void cargar(int mat[N][M], int n, int m){
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			cout<<"Introduzca elemento para mat["<<i<<"]["<<j<<"]: ";
+			cin>>mat[i][j];
+		}
+	}
+}
+
+//mostrar matriz
+void mostrar(int mat[N][M], int n, int m){
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			cout<<mat[i][j]<<" ";
+				}
+		cout<<endl;
+	}
+	cout<<endl;
+
+	}
+
+ 
+//---------------------------cargar planilla--------------------------------------
+void cargarplanilla(v,n)
+
+{  int cod[MAX],i=0,num;
+   string nombre[MAX];
+   float sb[MAX],imp[MAX],afp[MAX],sn[MAX],a[MAX];
+
+// Pide numero de empleados
+
+   do {
+         cout<< "Ingrese numero de empleados:";
+         cin>>num;
+   } while ((num>MAX)||(num<=0));
+
+//ciclo repetitivo
+   for (int i=0;i<num;i++)
+   {do {
+      cout<<"Ingrese el codigo del empleado: \n";
+      cin>>cod[i];
+
+   }while(((cod[i]<=0)||(cod[i]>=200)));
+   
+   // Ingreso de teclado de un string
+   cout<<"Ingrese el nombre: ";
+   getline(cin,nombre[i]);
+   do
+     {
+       cout <<"Ingrese el salario bruto: \n";
+       cin>>sb[i];
+   }while ((sb[i]<=0)||(sb[i]>=16000));
+
+   if(sb[i]>2800)
+   {
+     imp[i]=impuesto (sb[i]);
+     afp[i]=AFP(sb[i]);
+     sn[i]=sb[i]-imp[i]-afp[i];
+     if(sb[i]>10000)
+        {a[i]=0.01*sb[i];
+         sn[i]=sn[i]-a[i];
+            }
+     else
+         a[i]=0;
+   }
+   else
+   {
+      imp[i]=0;
+      afp[i]=0;
+      a[i]=0;
+      sn[i]=sb[i];
+   }
+  }
+  cout<<"------Planilla de sueldos-----"<<"\n";
+  cout<<"Codigo"<<"\t"<<"Nombre"<<"\t"<<"Sal.Bruto"<<"\t"<<"Impuestos"<<"\t"<<"Afp"<<"\t"<<"Otro"<<"\t"<<"Sal.Neto"<<"\n";
+  for(int c=0;c<num;c++)
+  { cout<<cod[c]<<"\t"<<nombre[c]<<"\t"<<sb[c]<<"\t"<<imp[c]<<"\t"<<afp[c]<<"\t"<<a[c]<<"\t"<<sn[c]<<"\n";
+
+  }
+  cout<<"Promedio de salario neto: "<<promedio(sn,num);
+  int m=mayor(sn,num);
+  int men=menor(sn,num);
+  cout<<"Mayor salario: "<<nombre[m]<< " con el salario: "<<sn[m];
+  cout<<"Menor salario: "<<nombre[men]<< " con el salario: "<<sn[men];
+
+  cout<<"Gracias \n";
+ 
+
+}
+
+ 
+float impuesto (float sb)
+{return sb*0.13;
+}
+
+float AFP (float sb)
+{return sb*0.121;
+}
+
+
+//-----------------------------ordenar matriz-----------------------------------+
+
+ 
+
+     //ordeno la matriz de mayor a menor
+     void ordenarmatriz(telemento M[fil][col], int n)
+            for(i=0;i<n;i++)
+				{for(j=0;j<n;j++)
+					{for(k=0;k<n;k++)
+						{for(l=0;l<n;l++)
+							for(int x=0; x<f;x++)
+          					  {
+            				    for(int y=0; y<c; y++)
+              					  {
+                    				if(M[i][j].mat[k][l]>M[i][j].matriz[x][y])
+                   					 {
+                   					     mayor=M[i][j].mat[k][l];
+                      				     M[i][j].mat[k][l]=M[i][j].matriz[x][y];
+                      				     matriz[x][y]=mayor;
+										
+                    }
+ 
+                }
+            }
+         }
+    }
+ 
+    //imprimo la matriz como ordenada
+    cout<<"\nLos Datos De La Matriz Fueron Ordenados de Mayor a Menor"<<endl;
+    for(int i=0; i<f; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            cout<<matriz[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+ 
+    return 0;
+}
